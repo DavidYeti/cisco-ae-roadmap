@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMB AE Readiness Roadmap | David Yeti</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif; 
+            background-color: #f7f7f7;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0076a8 0%, #1e3a8a 100%); /* Cisco Blue to Deep Blue */
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .step-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+        }
+        .badge-success {
+            background-color: #d1fae5; 
+            color: #065f46; 
+            font-weight: 600;
+        }
+        .badge-in-progress {
+            background-color: #fef3c7; 
+            color: #92400e; 
+            font-weight: 600;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1e3a8a;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-6xl mx-auto bg-white p-6 md:p-12 rounded-2xl card-shadow">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">SMB AE Readiness Strategy: David Yeti</h1>
+            <p class="text-xl font-medium gradient-bg text-white px-6 py-2 mt-3 inline-block rounded-full shadow-xl">The De-Risked Hire for Q3 (January) Launch</p>
+        </header>
+
+        <!-- Metrics & Leverage Banner -->
+        <div class="bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 p-6 mb-10 rounded-lg shadow-inner">
+            <h2 class="text-2xl font-bold mb-3 flex items-center">
+                <i class="fas fa-handshake mr-3 text-indigo-600"></i> Undeniable Internal Leverage
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                
+                <!-- Dual Sales Motion Advantage -->
+                <div class="bg-white p-4 rounded-lg shadow-md border border-indigo-200 flex flex-col justify-center items-center">
+                    <i class="fas fa-arrows-alt-h text-3xl text-indigo-600 mb-2"></i>
+                    <p class="text-sm font-bold text-gray-800 text-center">Dual Sales Motion Advantage</p>
+                    <p class="text-xs text-gray-500 mt-1 text-center">Understands both SMB Inbound (Trials) and Commercial Outbound (Hunting).</p>
+                </div>
+
+                <!-- Pipeline Generated -->
+                <div class="bg-white p-4 rounded-lg shadow-md border border-indigo-200">
+                    <p class="text-3xl font-extrabold text-green-600"><i class="fas fa-dollar-sign mr-2"></i> 4M+</p>
+                    <p class="text-sm font-semibold text-gray-600 mt-1">Pipeline Generated (Massive Leverage)</p>
+                </div>
+
+                <!-- Certifications In-Place -->
+                <div class="bg-white p-4 rounded-lg shadow-md border border-indigo-200">
+                    <p class="text-3xl font-extrabold text-green-600"><i class="fas fa-certificate mr-2"></i> 2 Certs</p>
+                    <p class="text-sm font-semibold text-gray-600 mt-1">Security Foundation In-Place</p>
+                </div>
+            </div>
+            <div class="mt-4 text-xs font-medium text-indigo-700">
+                <span class="badge-success p-1 rounded-md mr-2">Google Cybersecurity Certificate Completed</span>
+                <span class="badge-in-progress p-1 rounded-md"><i class="fas fa-hourglass-half mr-1"></i> CompTIA Security+ Exam Oct 18th</span>
+            </div>
+        </div>
+
+        <!-- 4 Pillars of Readiness Grid -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold text-gray-700 mb-6 border-b pb-2">The Four Pillars of AE Readiness</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Pillar 1: Deal Cycle Mastery -->
+                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-red-500 shadow-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-funnel-dollar text-3xl text-red-600 mr-4"></i>
+                        <h3 class="font-bold text-xl text-gray-800">1. Mastering the Full Deal Cycle</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Prove understanding of revenue process integrity and failure points.</p>
+                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+                        <li>Deal Flow Shadowing: Formally following 5 active security deals (start to finish) to pinpoint loss/stall triggers.</li>
+                        <li>Tool Mastery (Clari/CCW): Proficient in CCW quoting and Clari forecasting (Commit, Most Likely, Upside).</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 2: Technical Credibility -->
+                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-blue-500 shadow-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-code-branch text-3xl text-blue-600 mr-4"></i>
+                        <h3 class="font-bold text-xl text-gray-800">2. Technical Credibility & Discovery</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Eliminate reliance on SEs and accelerate high-quality qualification.</p>
+                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+                        <li>Core Products: Deep expertise in Duo and Secure Access (Zero Trust/SASE).</li>
+                        <li>Independent Qualification Goal: Successfully run the first two calls alone, focusing on M (Metrics) and I (Pain) before escalating to engineering.</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3: Velocity Execution (Enhanced Partner Focus) -->
+                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-yellow-500 shadow-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-tachometer-alt text-3xl text-yellow-600 mr-4"></i>
+                        <h3 class="font-bold text-xl text-gray-800">3. Velocity & Channel Qualification</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 italic">Partner Motion is critical (60%+ of SMB Revenue). Mastering speed and rigor required for SMB sales.</p>
+                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+                        <li>MEDDPICC Focus: Developing "trap" questions to rapidly validate M, I, & C (Champion) to disqualify weak deals quickly.</li>
+                        <li>Partner Strategy: Implementing a tiered channel approach (prioritizing consultative partners like Stratus/Port53 for complex deals, while focusing on growth seeding for new partners).</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 4: Accountability & Close -->
+                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-green-500 shadow-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-briefcase text-3xl text-green-600 mr-4"></i>
+                        <h3 class="font-bold text-xl text-gray-800">4. Accountability & Interview Close</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Prove organizational rigor and finalize the AE pitch.</p>
+                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+                        <li>System: Managing entire plan using a personal Trello/Kanban board methodology (demonstrates AE-level organization).</li>
+                        <li>Dec Readiness: Developing and rehearsing the 90-Day Go-to-Market Presentation using Q1 quota achievement as the anchor.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Gemini Skill Accelerator -->
+        <section class="mb-10 bg-gray-100 p-6 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-700 mb-6 flex items-center border-b pb-2">
+                <i class="fas fa-bolt text-yellow-500 mr-3"></i> ✨ Competitive Battlecard Accelerator
+            </h2>
+            <p class="text-sm text-gray-600 mb-4">Practice your competitive takedowns by instantly generating a 4-point battlecard for Cisco products against a competitor. (Uses Gemini LLM for real-time, grounded insights).</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <select id="cisco-product" class="p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm col-span-1">
+                    <option value="Cisco Duo">Cisco Duo (MFA/Access)</option>
+                    <option value="Cisco Secure Access (SASE)">Cisco Secure Access (SASE)</option>
+                    <option value="Cisco Umbrella">Cisco Umbrella (DNS Security)</option>
+                </select>
+                <input type="text" id="competitor-name" placeholder="Enter Competitor (e.g., Okta, Zscaler, Fortinet)" class="p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 text-sm col-span-2">
+            </div>
+            
+            <button id="generate-button" onclick="generateBattlecard()" class="w-full gradient-bg text-white font-bold py-3 px-4 rounded-lg hover:opacity-90 transition duration-150 flex items-center justify-center">
+                <span id="button-text"><i class="fas fa-rocket mr-2"></i> Generate Battlecard</span>
+                <div id="loading-spinner" class="loading-spinner hidden"></div>
+            </button>
+
+            <div id="battlecard-output" class="mt-6 p-4 bg-white rounded-lg border border-gray-300 hidden">
+                <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                    <i class="fas fa-trophy text-yellow-600 mr-2"></i> CISCO ADVANTAGE: <span id="card-title" class="ml-2 text-blue-600"></span>
+                </h3>
+                <ul id="battlecard-points" class="list-disc pl-5 text-gray-700 text-sm space-y-2">
+                    <!-- LLM Output will be placed here -->
+                </ul>
+                <div id="sources" class="mt-4 pt-3 border-t border-gray-200 hidden text-xs text-gray-500">
+                    <p class="font-semibold">Sources Used:</p>
+                    <ul id="source-list" class="list-none pl-0 space-y-1 mt-1"></ul>
+                </div>
+            </div>
+
+             <div id="error-message" class="hidden mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm">
+                An error occurred. Please check your network connection and try again.
+            </div>
+
+        </section>
+
+
+        <!-- Conclusion Goal -->
+        <div class="gradient-bg text-white p-6 mt-10 rounded-xl shadow-2xl text-center">
+            <p class="font-bold text-2xl">Target Outcome: De-Risked Hire</p>
+            <p class="text-base mt-2">I am positioning myself to be the proven, fully trained SMB AE candidate ready to drive predictable revenue and accurately forecast from Day 1 in January (Q3).</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Global placeholder for the API Key (Canvas environment handles this)
+        const apiKey = ""; 
+
+        // Utility functions for UI state
+        function showLoading(isLoading) {
+            const button = document.getElementById('generate-button');
+            const buttonText = document.getElementById('button-text');
+            const spinner = document.getElementById('loading-spinner');
+            button.disabled = isLoading;
+            buttonText.classList.toggle('hidden', isLoading);
+            spinner.classList.toggle('hidden', !isLoading);
+            document.getElementById('error-message').classList.add('hidden');
+            document.getElementById('battlecard-output').classList.add('hidden');
+        }
+
+        function updateOutput(title, points, sources) {
+            const outputDiv = document.getElementById('battlecard-output');
+            const cardTitle = document.getElementById('card-title');
+            const pointsList = document.getElementById('battlecard-points');
+            const sourcesDiv = document.getElementById('sources');
+            const sourcesList = document.getElementById('source-list');
+
+            cardTitle.textContent = title;
+            pointsList.innerHTML = '';
+            sourcesList.innerHTML = '';
+
+            // Populate competitive points
+            points.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span class="font-semibold">${item.advantage}:</span> ${item.detail}`;
+                pointsList.appendChild(li);
+            });
+
+            // Populate sources
+            if (sources && sources.length > 0) {
+                sources.forEach(source => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${source.uri}" target="_blank" class="text-blue-500 hover:text-blue-700 underline">${source.title || source.uri}</a>`;
+                    sourcesList.appendChild(li);
+                });
+                sourcesDiv.classList.remove('hidden');
+            } else {
+                sourcesDiv.classList.add('hidden');
+            }
+
+            outputDiv.classList.remove('hidden');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.classList.remove('hidden');
+        }
+
+
+        /**
+         * Retries the fetch request with exponential backoff.
+         * @param {string} url - The API endpoint URL.
+         * @param {object} options - The fetch options.
+         * @param {number} retries - Number of remaining retries.
+         * @param {number} delay - Current delay in milliseconds.
+         * @returns {Promise<Response>} The response from the fetch call.
+         */
+        async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (response.status === 429 && retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                }
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+                return response;
+            } catch (error) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
+                }
+                throw error;
+            }
+        }
+
+
+        async function generateBattlecard() {
+            const product = document.getElementById('cisco-product').value;
+            const competitor = document.getElementById('competitor-name').value.trim();
+            
+            if (!competitor) {
+                showError("Please enter a competitor name to generate the battlecard.");
+                return;
+            }
+
+            showLoading(true);
+            document.getElementById('battlecard-output').classList.add('hidden');
+            document.getElementById('error-message').classList.add('hidden');
+
+            const systemPrompt = `You are a specialized competitive sales engineer for Cisco. Your task is to generate a concise, 4-point battlecard comparing Cisco's solution (${product}) against the specified competitor (${competitor}). Each point must be structured as a clear, quantifiable Cisco advantage. Use the search tool to ensure the comparison is accurate and up-to-date. Output must be a JSON array.`;
+            
+            const userQuery = `Generate a 4-point competitive battlecard for "${product}" versus "${competitor}". Focus on integration, total cost of ownership (TCO), breadth of portfolio, and security efficacy.`;
+            
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const responseSchema = {
+                type: "ARRAY",
+                items: {
+                    type: "OBJECT",
+                    properties: {
+                        "advantage": { "type": "STRING", "description": "The concise competitive advantage of Cisco (e.g., Unified Platform or Lower TCO)." },
+                        "detail": { "type": "STRING", "description": "The supporting detail explaining the advantage against the competitor." }
+                    },
+                    propertyOrdering: ["advantage", "detail"]
+                }
+            };
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: responseSchema
+                }
+            };
+
+            try {
+                const response = await fetchWithBackoff(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const jsonText = candidate.content.parts[0].text;
+                    let battlecardPoints;
+
+                    try {
+                        battlecardPoints = JSON.parse(jsonText);
+                    } catch (e) {
+                        console.error("Failed to parse JSON:", jsonText, e);
+                        throw new Error("Received invalid format from AI. Please try a different query.");
+                    }
+
+                    // Extract grounding sources
+                    let sources = [];
+                    const groundingMetadata = candidate.groundingMetadata;
+                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                        sources = groundingMetadata.groundingAttributions
+                            .map(attribution => ({
+                                uri: attribution.web?.uri,
+                                title: attribution.web?.title,
+                            }))
+                            .filter(source => source.uri && source.title);
+                    }
+                    
+                    const title = `${product} vs. ${competitor}`;
+                    updateOutput(title, battlecardPoints, sources);
+
+                } else if (result.error) {
+                    console.error("Gemini API Error:", result.error);
+                    showError(`API Error: ${result.error.message}`);
+                } else {
+                    showError("Could not generate the battlecard. The AI response was empty.");
+                }
+
+            } catch (error) {
+                console.error("Fetch or processing error:", error);
+                showError(`Failed to connect or process response: ${error.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+    </script>
+</body>
+</html>

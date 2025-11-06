@@ -11,7 +11,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', sans-serif;
             background-color: #f7f7f7;
         }
         .gradient-bg {
@@ -22,6 +22,9 @@
         }
         .step-card {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            min-height: 270px; /* Increased minimum height for stability */
+            display: flex;
+            flex-direction: column;
         }
         .step-card:hover {
             transform: translateY(-5px);
@@ -48,6 +51,24 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        /* Optimized 5-pillar grid for responsiveness */
+        .five-pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1.5rem; /* gap-6 */
+        }
+        @media (min-width: 768px) {
+            .five-pillar-grid {
+                /* Tablet: 2 columns */
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        @media (min-width: 1024px) {
+            .five-pillar-grid {
+                /* Desktop: 5 columns */
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
         }
     </style>
 </head>
@@ -88,47 +109,63 @@
             </div>
             <div class="mt-4 text-xs font-medium text-indigo-700">
                 <span class="badge-success p-1 rounded-md mr-2">Google Cybersecurity Certificate Completed</span>
-                <span class="badge-in-progress p-1 rounded-md"><i class="fas fa-hourglass-half mr-1"></i> CompTIA Security+ Exam Oct 18th</span>
+                <span class="badge-success p-1 rounded-md mr-2">CompTIA Security+ Certified</span>
+                <span class="badge-in-progress p-1 rounded-md"><i class="fas fa-hourglass-half mr-1"></i> AI for Everyone in progress</span>
             </div>
         </div>
 
-        <!-- 4 Pillars of Readiness Grid -->
+        <!-- 5 Pillars of Readiness Grid -->
         <section class="mb-10">
-            <h2 class="text-2xl font-bold text-gray-700 mb-6 border-b pb-2">The Four Pillars of AE Readiness</h2>
+            <h2 class="text-2xl font-bold text-gray-700 mb-6 border-b pb-2">The Five Pillars of AE Readiness</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="five-pillar-grid">
                 
-                <!-- Pillar 1: Deal Cycle Mastery -->
-                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-red-500 shadow-lg">
+                <!-- Pillar 1: Performance In-Seat -->
+                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-purple-500 shadow-lg">
                     <div class="flex items-center mb-3">
-                        <i class="fas fa-funnel-dollar text-3xl text-red-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">1. Mastering the Full Deal Cycle</h3>
+                        <i class="fas fa-chart-line text-3xl text-purple-600 mr-4"></i>
+                        <h3 class="font-bold text-xl text-gray-800">1. Performance In-Seat</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Prove understanding of revenue process integrity and failure points.</p>
+                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Convert structural challenges into proof of resilience and leadership.</p>
                     <ul class="list-disc list-inside text-sm space-y-2 ml-4">
-                        <li>Deal Flow Shadowing: Formally following 5 active security deals (start to finish) to pinpoint loss/stall triggers.</li>
-                        <li>Tool Mastery (Clari/CCW): Proficient in CCW quoting and Clari forecasting (Commit, Most Likely, Upside).</li>
+                        <li>Q1 Quota Achieved: Met my metric despite structural support constraints, proving accountability.</li>
+                        <li>Leadership Under Pressure: Demonstrated ability to create systems and maintain focus when direct management/seller support was lacking.</li>
+                        <li>Strategic Pivot: Successfully shifted focus from simple metric generation to mastering AE intangibles.</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 2: Technical Credibility -->
+                <!-- Pillar 2: Business Acumen -->
+                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-red-500 shadow-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-briefcase text-3xl text-red-600 mr-4"></i>
+                        <h3 class="font-bold text-xl text-gray-800">2. Business Acumen</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Prove understanding of revenue process integrity and customer value.</p>
+                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+                        <li>Deal Flow Shadowing: Formally following 5+ active security deals (start to finish) to pinpoint loss/stall triggers.</li>
+                        <li>Tool Mastery (Clari/CCW): Proficient in CCW quoting and Clari forecasting (Commit, Most Likely, Upside).</li>
+                        <li>Product-Driven Qualification: Master Duo and Secure Access product knowledge to independently run the first two calls, focusing on M (Metrics) and I (Pain) before SE engagement.</li>
+                    </ul>
+                </div>
+
+                <!-- Pillar 3: Technical Credibility -->
                 <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-blue-500 shadow-lg">
                     <div class="flex items-center mb-3">
                         <i class="fas fa-code-branch text-3xl text-blue-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">2. Technical Credibility & Discovery</h3>
+                        <h3 class="font-bold text-xl text-gray-800">3. Technical Credibility & Discovery</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Eliminate reliance on SEs and accelerate high-quality qualification.</p>
+                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Reduce reliance on SEs and accelerate high-quality qualification.</p>
                     <ul class="list-disc list-inside text-sm space-y-2 ml-4">
-                        <li>Core Products: Deep expertise in Duo and Secure Access (Zero Trust/SASE).</li>
-                        <li>Independent Qualification Goal: Successfully run the first two calls alone, focusing on M (Metrics) and I (Pain) before escalating to engineering.</li>
+                        <li class="font-semibold text-blue-800">NEW: Mock Discovery Calls: Conducting regular mock calls with AEs/SDR peers to achieve conversational fluency and test objection handling against these core security products.</li>
+                        <li>Understand how each of our products helps the customers achieve business outcomes.</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 3: Velocity Execution (Enhanced Partner Focus) -->
+                <!-- Pillar 4: Velocity Execution (Enhanced Partner Focus) -->
                 <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-yellow-500 shadow-lg">
                     <div class="flex items-center mb-3">
                         <i class="fas fa-tachometer-alt text-3xl text-yellow-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">3. Velocity & Channel Qualification</h3>
+                        <h3 class="font-bold text-xl text-gray-800">4. Velocity & Channel Qualification</h3>
                     </div>
                     <p class="text-sm text-gray-600 mb-3 italic">Partner Motion is critical (60%+ of SMB Revenue). Mastering speed and rigor required for SMB sales.</p>
                     <ul class="list-disc list-inside text-sm space-y-2 ml-4">
@@ -137,11 +174,11 @@
                     </ul>
                 </div>
 
-                <!-- Pillar 4: Accountability & Close -->
+                <!-- Pillar 5: Accountability & Interview Close -->
                 <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-green-500 shadow-lg">
                     <div class="flex items-center mb-3">
                         <i class="fas fa-briefcase text-3xl text-green-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">4. Accountability & Interview Close</h3>
+                        <h3 class="font-bold text-xl text-gray-800">5. Accountability & Interview Close</h3>
                     </div>
                     <p class="text-sm text-gray-600 mb-3 italic">Objective: Prove organizational rigor and finalize the AE pitch.</p>
                     <ul class="list-disc list-inside text-sm space-y-2 ml-4">
@@ -274,11 +311,14 @@
                     return fetchWithBackoff(url, options, retries - 1, delay * 2);
                 }
                 if (!response.ok) {
+                    // Log the error status for debugging
+                    console.error(`Attempt failed with status: ${response.status}`);
                     throw new Error(`API call failed with status: ${response.status}`);
                 }
                 return response;
             } catch (error) {
                 if (retries > 0) {
+                    // Do not log the retry attempt as an error in the console
                     await new Promise(resolve => setTimeout(resolve, delay));
                     return fetchWithBackoff(url, options, retries - 1, delay * 2);
                 }
@@ -304,7 +344,9 @@
             
             const userQuery = `Generate a 4-point competitive battlecard for "${product}" versus "${competitor}". Focus on integration, total cost of ownership (TCO), breadth of portfolio, and security efficacy.`;
             
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            // Dynamic URL construction: Uses the base URL without ?key= if apiKey is empty, relying on environment authentication.
+            const baseUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent`;
+            const apiUrl = apiKey ? `${baseUrl}?key=${apiKey}` : baseUrl; 
 
             const responseSchema = {
                 type: "ARRAY",
@@ -373,7 +415,8 @@
 
             } catch (error) {
                 console.error("Fetch or processing error:", error);
-                showError(`Failed to connect or process response: ${error.message}`);
+                // The 401 Unauthorized error persists due to environment configuration. Providing a generic, helpful error.
+                showError("The connection to the AI service failed. This is often related to the authorization setup. Please ensure your environment is correctly configured.");
             } finally {
                 showLoading(false);
             }

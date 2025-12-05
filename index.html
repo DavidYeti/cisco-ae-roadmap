@@ -4,439 +4,439 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMB AE Readiness Roadmap | David Yeti</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        /* General Reset and Base Styles */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin: 0;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #0076a8 0%, #1e3a8a 100%); /* Cisco Blue to Deep Blue */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .card-shadow {
-            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+       
+        /* Header Styling */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
         }
-        .step-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            min-height: 270px;
-            display: flex;
-            flex-direction: column;
-            width: 100%; 
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 5px;
         }
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+        .tagline {
+            font-size: 18px;
+            color: #ffffff;
+            background-color: #1e3a8a; /* Dark Blue */
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 20px;
         }
-        .badge-success {
-            background-color: #d1fae5; 
-            color: #065f46; 
-            font-weight: 600;
+
+
+        /* Benchmarks Section */
+        .benchmarks {
+            background-color: #e6f0ff;
+            border-left: 5px solid #0076a8;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
         }
-        .badge-in-progress {
-            background-color: #fef3c7; 
-            color: #92400e; 
-            font-weight: 600;
+        .benchmarks h2 {
+            font-size: 22px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
         }
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #1e3a8a;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* Stable multi-column grid layout */
-        .pillar-grid {
+        .benchmarks-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Default single column for mobile */
-            gap: 1.5rem; /* Standard gap */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
         }
-        @media (min-width: 768px) {
-            .pillar-grid {
-                grid-template-columns: repeat(2, 1fr); /* Two columns for tablet/desktop */
-            }
+        .benchmarks-item {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #cce0ff;
         }
-        /* Force Pillar 5 to span full width */
-        .pillar-full-span {
-            grid-column: 1 / -1;
+        .benchmarks-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #065f46; /* Green for success */
+        }
+        .benchmarks-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .cert-badges {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #333;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        .badge-green {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .badge-yellow {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+
+        /* Highlight Reel */
+        .highlight-reel {
+            background-color: #fff8e1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+        .highlight-reel h2 {
+            font-size: 22px;
+            color: #b8860b; /* Darker Gold */
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ffd700;
+            padding-bottom: 5px;
+        }
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
         .highlight-item {
-            display: flex;
-            align-items: flex-start;
-            text-align: left;
-            margin-bottom: 1rem;
-            padding: 1rem;
             background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ffd700;
         }
-        .highlight-icon {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
+        .highlight-item h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .highlight-item a {
+            color: #0076a8;
+            text-decoration: none;
+            font-size: 12px;
+            display: block;
+            margin-top: 5px;
+        }
+
+
+        /* Pillars Section */
+        .pillars-section h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .pillar-grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        /* Pillar 5 Spans Full Width on Desktop */
+        @media (min-width: 768px) {
+            .pillar-grid-container > div:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+       
+        .pillar-card {
+            padding: 20px;
+            border-radius: 6px;
+            border-top: 4px solid;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .pillar-card h3 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: #dbeafe; /* Light Blue */
-            color: #1e3a8a; /* Dark Blue */
-            margin-right: 1rem;
+        }
+        .pillar-card i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .pillar-card ul {
+            list-style: disc;
+            margin-left: 20px;
+            font-size: 14px;
+            color: #555;
+            padding: 0;
+            margin-top: 10px;
+        }
+        .pillar-card li {
+            margin-bottom: 5px;
+        }
+        .pillar-card em {
+            display: block;
+            font-style: italic;
+            margin-top: 5px;
+            color: #777;
+            font-size: 13px;
+        }
+
+
+        /* Individual Pillar Colors (Used for border and icons) */
+        .p1-color { border-color: #8b5cf6; color: #8b5cf6; } /* Purple */
+        .p2-color { border-color: #3b82f6; color: #3b82f6; } /* Blue */
+        .p3-color { border-color: #ef4444; color: #ef4444; } /* Red */
+        .p4-color { border-color: #f59e0b; color: #f59e0b; } /* Yellow */
+        .p5-color { border-color: #10b981; color: #10b981; } /* Green */
+
+
+        /* Conclusion */
+        .conclusion {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .conclusion p {
+            margin: 0;
+        }
+        .conclusion-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .cta-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e0f0ff;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #ff4500; /* Cisco Orange/Red for CTA */
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #cc3700;
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            .pillar-grid-container {
+                grid-template-columns: 1fr;
+            }
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+            .benchmarks-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+    <!-- Load Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="p-4 sm:p-8">
-    <div class="max-w-6xl mx-auto bg-white p-6 md:p-12 rounded-2xl card-shadow">
-        
+<body>
+    <div class="container">
+       
         <!-- Header Section -->
-        <header class="text-center mb-10">
-            <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">SMB AE Readiness Strategy: David Yeti</h1>
-            <p class="text-xl font-medium gradient-bg text-white px-6 py-2 mt-3 inline-block rounded-full shadow-xl">The Easy to Ramp Hire for Q3 (January) Launch</p>
+        <header>
+            <h1>SMB AE Readiness Strategy: David Yeti</h1>
+            <p class="tagline">The Easy to Ramp Hire for Q3 (January) Launch</p>
         </header>
 
+
         <!-- Metrics & Leverage Banner -->
-        <div class="bg-indigo-50 border-l-4 border-indigo-500 text-indigo-800 p-6 mb-10 rounded-lg shadow-inner">
-            <h2 class="text-2xl font-bold mb-3 flex items-center">
-                <i class="fas fa-handshake mr-3 text-indigo-600"></i> Proven Readiness & Value Benchmarks
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                
-                <!-- Dual Sales Motion Advantage -->
-                <div class="bg-white p-4 rounded-lg shadow-md border border-indigo-200 flex flex-col justify-center items-center">
-                    <i class="fas fa-arrows-alt-h text-3xl text-indigo-600 mb-2"></i>
-                    <p class="text-sm font-bold text-gray-800 text-center">Dual Sales Motion Advantage</p>
-                    <p class="text-xs text-gray-500 mt-1 text-center">Understands both SMB Inbound (Trials) and Commercial Outbound (Hunting).</p>
+        <div class="benchmarks">
+            <h2>Proven Readiness & Value Benchmarks</h2>
+           
+            <div class="benchmarks-grid">
+               
+                <!-- SAO Quota Attainment -->
+                <div class="benchmarks-item">
+                    <p class="benchmarks-value">105%</p>
+                    <p class="benchmarks-label">FY26 Q1 attainment</p>
                 </div>
+
 
                 <!-- Pipeline Generated -->
-                <div class="bg-white p-4 rounded-lg shadow-md border border-indigo-200">
-                    <p class="text-3xl font-extrabold text-green-600"><i class="fas fa-dollar-sign mr-2"></i> 4M+</p>
-                    <p class="text-sm font-semibold text-gray-600 mt-1">Pipeline Generated (Massive Leverage)</p>
+                <div class="benchmarks-item">
+                    <p class="benchmarks-value">$2.9M</p>
+                    <p class="benchmarks-label">FY26 Q1 Pipeline (150% of Goal)</p>
                 </div>
 
-                <!-- Certifications In-Place -->
-                <div class="bg-white p-4 rounded-lg shadow-md border border-indigo-200">
-                    <p class="text-3xl font-extrabold text-green-600"><i class="fas fa-certificate mr-2"></i> 2 Certs</p>
-                    <p class="text-sm font-semibold text-gray-600 mt-1">Security Foundation In-Place</p>
+
+                <!-- Top Pipeline Contributor -->
+                <div class="benchmarks-item">
+                    <p class="benchmarks-value">Top Pipeline Contributor</p>
+                    <p class="benchmarks-label">For FY26 Q1</p>
                 </div>
             </div>
-            <div class="mt-4 text-xs font-medium text-indigo-700">
-                <span class="badge-success p-1 rounded-md mr-2">Google Cybersecurity Certificate Completed</span>
-                <span class="badge-success p-1 rounded-md mr-2">CompTIA Security+ Certified</span>
-                <span class="badge-in-progress p-1 rounded-md"><i class="fas fa-hourglass-half mr-1"></i> GAI - White Belt in progress</span>
+           
+            <div class="cert-badges">
+                <span class="badge badge-green">Google Cybersecurity Certificate Completed</span>
+                <span class="badge badge-green">CompTIA Security+ Certified</span>
+                <span class="badge badge-yellow">GenAi Collab - White Belt in progress</span>
             </div>
         </div>
 
+
         <!-- Career Highlight Reel Section (The Proof) -->
-        <section class="mb-10 bg-blue-50 p-6 rounded-xl shadow-lg border border-blue-200">
-            <h2 class="text-2xl font-bold text-gray-700 mb-6 flex items-center border-b pb-2">
-                <i class="fas fa-bullseye text-blue-600 mr-3"></i> Career Highlight Reel: Tangible Results
-            </h2>
-            <p class="text-sm text-gray-600 mb-6">These artifacts demonstrate proven capability and serve as the foundation for the 90-Day AE launch plan.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                
-                <!-- Slot 1: Mock Call & Pitch Readiness -->
+        <div class="highlight-reel">
+            <h2>Career Highlight Reel: Tangible Results</h2>
+            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">These artifacts demonstrate proven capability and serve as the foundation for the 90-Day AE launch plan. (Clickable links can be dropped in here.)</p>
+           
+            <div class="highlight-grid">
+               
+                <!-- Slot 1: Mock Call & Pitch Readiness (Pillar 2) -->
                 <div class="highlight-item">
-                    <div class="highlight-icon">
-                        <i class="fas fa-microphone"></i>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800">Mock Call & Pitch Readiness</p>
-                        <p class="text-sm text-gray-600">Completed recorded mock discovery calls on Duo and Secure Access, validating conversational fluency and objection handling before AE launch.</p>
-                        <!-- Placeholder link for proof -->
-                        <a href="[Insert Recorded Demo Link]" class="text-xs text-blue-500 hover:underline mt-1 block">Watch Discovery Call Sample</a>
-                    </div>
+                    <h3>Mock Call & Pitch Readiness</h3>
+                    <p style="font-size: 13px;">Completed recorded mock discovery calls on Duo and Secure Access, validating conversational fluency and objection handling before AE launch.</p>
+                    <a href="[Insert Unlisted YouTube Link]" style="color: #ef4444; font-weight: bold;">Watch Recorded Discovery Call (5 min)</a>
                 </div>
 
-                <!-- Slot 2: Certified Technical Competence (Moved from Slot 4) -->
+
+                <!-- Slot 2: Certified Technical Competence (Pillar 2) -->
                 <div class="highlight-item">
-                    <div class="highlight-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800">Certified Technical Competence</p>
-                        <p class="text-sm text-gray-600">Achieved CompTIA Security+ certification, proving mastery of security fundamentals (SASE, Zero Trust, risk mitigation) needed for credible customer conversations.</p>
-                        <!-- Placeholder link for proof -->
-                        <a href="[Insert Badge/Certificate Link]" class="text-xs text-blue-500 hover:underline mt-1 block">View Security+ Credential</a>
-                    </div>
+                    <h3>Certified Technical Competence</h3>
+                    <p style="font-size: 13px;">Achieved CompTIA Security+ certification, proving mastery of security fundamentals (SASE, Zero Trust, risk mitigation) needed for credible customer conversations.</p>
+                    <a href="https://www.credly.com/badges/1dc4932b-d134-4401-afc7-5b96124397fe/public_url" style="color: #ef4444; font-weight: bold;">View Verified Security+ Badge</a>
                 </div>
 
-                <!-- Slot 3: Pipeline Management System (Moved from Slot 2) -->
+
+                <!-- Slot 3: Pipeline Management System (Pillar 5) -->
                 <div class="highlight-item">
-                    <div class="highlight-icon">
-                        <i class="fas fa-clipboard-list"></i>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800">Pipeline Management System</p>
-                        <p class="text-sm text-gray-600">Developed a Trello/Kanban board methodology for tracking pipeline hygiene, shadow deals, and partner SLA adherence (demonstrates organizational rigor).</p>
-                        <!-- Placeholder link for proof -->
-                        <a href="[Insert Trello/Kanban Link]" class="text-xs text-blue-500 hover:underline mt-1 block">Review Kanban System Demo</a>
-                    </div>
+                    <h3>Pipeline Management System</h3>
+                    <p style="font-size: 13px;">Developed a Trello/Kanban board methodology for tracking pipeline hygiene, shadow deals, and partner SLA adherence (demonstrates organizational rigor).</p>
+                    <a href="https://www.youtube.com/@davidyeti" style="color: #ef4444; font-weight: bold;">Review Kanban System Demo</a>
                 </div>
 
-                <!-- Slot 4: Forecasting & Quoting Proficiency (Moved from Slot 3) -->
+
+                <!-- Slot 4: Forecasting & Quoting Proficiency (Pillar 3) -->
                 <div class="highlight-item">
-                    <div class="highlight-icon">
-                        <i class="fas fa-chart-area"></i>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800">Forecasting & Quoting Proficiency</p>
-                        <p class="text-sm text-gray-600">Proficient in generating quotes (CCW) and manipulating forecast calls (Clari), eliminating ramp time associated with critical internal tools.</p>
-                        <!-- Placeholder link for proof -->
-                        <a href="[Insert Clari/CCW Mock Report Link]" class="text-xs text-blue-500 hover:underline mt-1 block">View Mock Forecast Report</a>
-                    </div>
+                    <h3>Forecasting & Quoting Proficiency</h3>
+                    <p style="font-size: 13px;">Proficient in generating quotes (CCW) and manipulating forecast calls (Clari), eliminating ramp time associated with critical internal tools.</p>
+                    <a href="[Insert Clari/CCW Mock Report Link]" style="color: #ef4444; font-weight: bold;">View Mock Forecast Report</a>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- 5 Pillars of Readiness Grid (Two-Column Responsive Stack) -->
-        <section class="mb-10">
-            <h2 class="text-2xl font-bold text-gray-700 mb-6 border-b pb-2">The Five Pillars of AE Readiness</h2>
-            
-            <div class="pillar-grid">
-                
-                <!-- Pillar 1: Performance In-Seat -->
-                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-purple-500 shadow-lg">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-chart-line text-3xl text-purple-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">1. Performance In-Seat</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Convert structural challenges into proof of resilience and leadership.</p>
-                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
-                        <li>Q1 Quota Achieved: Met my metric despite structural support constraints, proving accountability.</li>
-                        <li>Leadership Under Pressure: Demonstrated ability to create systems and maintain focus when direct management/seller support was lacking.</li>
-                        <li>Strategic Pivot: Successfully shifted focus from simple metric generation to mastering AE intangibles.</li>
+
+        <!-- 5 Pillars of Readiness Grid -->
+        <div class="pillars-section">
+            <h2>The Five Pillars of AE Readiness</h2>
+           
+            <div class="pillar-grid-container">
+               
+                <!-- Pillar 1: Performance In-Seat (Purple) -->
+                <div class="pillar-card p1-color">
+                    <h3><i class="fas fa-trophy p1-color"></i> 1. Performance In-Seat</h3>
+                    <em>Objective: Exceed targets and demonstrate immediate leadership and systemic accountability.</em>
+                    <ul>
+                        <li>FY26 Q1 Achievement: 105% SAO Quota attainment with $2.9M pipeline generated out of a $2M goal (150%).</li>
+                        <li>Leadership Under Pressure: Stepped up to lead bi-weekly meetings, drive flow ideation, and serve as a constant resource during a six-month leadership gap.</li>
+                        <li>Strategic Pivot: Successfully shifted focus from metric generation to mastering AE intangibles (e.g., forecasting and deal analysis).</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 2: Technical Credibility (SE Handoffs) -->
-                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-blue-500 shadow-lg">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-code-branch text-3xl text-blue-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">2. Technical Credibility & Discovery</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Reduce reliance on SEs and accelerate high-quality qualification.</p>
-                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
-                        <li>Mock Discovery Calls: Conducting regular mock calls with AEs/SDR peers to achieve conversational fluency and test objection handling against these core security products.</li>
+
+                <!-- Pillar 2: Technical Credibility (Blue) -->
+                <div class="pillar-card p2-color">
+                    <h3><i class="fas fa-code-branch p2-color"></i> 2. Technical Credibility & Discovery</h3>
+                    <em>Objective: Reduce reliance on SEs and accelerate high-quality qualification.</em>
+                    <ul>
+                        <li>Mock Discovery Calls: Conducting regular mock calls with AEs/SDR peers to achieve conversational fluency and test objection handling against core security products.</li>
                         <li>Product-Driven Qualification: Master Duo and Secure Access product knowledge to independently run the first two calls, focusing on M (Metrics) and I (Pain) before SE engagement.</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 3: Business Acumen (Value Selling & Forecasting) -->
-                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-red-500 shadow-lg">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-briefcase text-3xl text-red-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">3. Business Acumen</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Prove understanding of revenue process integrity and customer value.</p>
-                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+
+                <!-- Pillar 3: Business Acumen (Red) -->
+                <div class="pillar-card p3-color">
+                    <h3><i class="fas fa-briefcase p3-color"></i> 3. Business Acumen</h3>
+                    <em>Objective: Prove understanding of revenue process integrity and customer value.</em>
+                    <ul>
                         <li>Understand how each of our products helps the customers achieve business outcomes.</li>
                         <li>Deal Flow Shadowing: Formally following 5+ active security deals (start to finish) to pinpoint loss/stall triggers.</li>
                         <li>Tool Mastery (Clari/CCW): Proficient in CCW quoting and Clari forecasting (Commit, Most Likely, Upside).</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 4: Velocity Execution (Channel Qualification) -->
-                <div class="step-card bg-gray-50 p-6 rounded-xl border-t-4 border-yellow-500 shadow-lg">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-tachometer-alt text-3xl text-yellow-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">4. Velocity & Channel Qualification</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3 italic">Partner Motion is critical (60%+ of SMB Revenue). Mastering speed and rigor required for SMB sales.</p>
-                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+
+                <!-- Pillar 4: Velocity Execution (Yellow) -->
+                <div class="pillar-card p4-color">
+                    <h3><i class="fas fa-bolt p4-color"></i> 4. Velocity & Channel Qualification</h3>
+                    <em>Objective: Partner Motion is critical (60%+ of SMB Revenue). Mastering speed and rigor required for SMB sales.</em>
+                    <ul>
                         <li>MEDDPICC Focus: Developing "trap" questions to rapidly validate M, I, & C (Champion) to disqualify weak deals quickly.</li>
                         <li>Partner Strategy: Implementing a tiered channel approach (prioritizing consultative partners like Stratus/Port53 for complex deals, while focusing on growth seeding for new partners).</li>
                     </ul>
                 </div>
 
-                <!-- Pillar 5: The Inner Game (Spans full width) -->
-                <div class="step-card pillar-full-span bg-gray-50 p-6 rounded-xl border-t-4 border-green-500 shadow-lg">
-                    <div class="flex items-center mb-3">
-                        <i class="fas fa-brain text-3xl text-green-600 mr-4"></i>
-                        <h3 class="font-bold text-xl text-gray-800">5. The Inner Game</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-3 italic">Objective: Prepare your mind, body, and spirit to take on the sustained demands of AE responsibility.</p>
-                    <ul class="list-disc list-inside text-sm space-y-2 ml-4">
+
+                <!-- Pillar 5: The Inner Game (Green) -->
+                <div class="pillar-card p5-color">
+                    <h3><i class="fas fa-brain p5-color"></i> 5. The Inner Game</h3>
+                    <em>Objective: Prepare your mind, body, and spirit to take on the sustained demands of AE responsibility.</em>
+                    <ul>
                         <li>Energy Management: Optimizing personal systems (e.g., outsourced meal prep, structured gym/yoga schedule) to ensure peak mental clarity and stamina.</li>
                         <li>High-Value Communication: Seeking opportunities in groups like Toastmasters or presentation classes to sharpen executive-level communication and presence.</li>
                         <li>Time & Focus Mastery: Improving time management techniques (e.g., deep work blocks) to prioritize high-leverage tasks over reactive administrative work.</li>
                     </ul>
                 </div>
 
+
             </div>
-        </section>
+        </div>
+
+
+        <!-- CTA Section -->
+        <div class="cta-container">
+            <p style="font-size: 16px; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">
+                Ready to discuss Q3 revenue alignment?
+            </p>
+            <a href="mailto:YOUREMAIL@cisco.com?subject=Discussion%20on%20Q3%20AE%20Readiness%20-%20David%20Yeti%20Roadmap&body=Thank%20you%20for%20reviewing%20my%20roadmap.%20I%20am%20available%20for%20a%20Webex%20call%20to%20discuss%20my%20next%20steps." class="cta-button">
+                <i class="fas fa-comments" style="margin-right: 8px;"></i> Contact David (Webex/Email)
+            </a>
+        </div>
+
+
 
 
         <!-- Conclusion Goal -->
-        <div class="gradient-bg text-white p-6 mt-10 rounded-xl shadow-2xl text-center">
-            <p class="font-bold text-2xl">Target Outcome: Easy to Ramp Hire</p>
-            <p class="text-base mt-2">I am positioning myself to be the proven, fully trained SMB AE candidate ready to drive predictable revenue and accurately forecast from Day 1 in January (Q3).</p>
+        <div class="conclusion">
+            <p class="conclusion-title">Target Outcome: Easy to Ramp Hire</p>
+            <p style="font-size: 14px; margin-top: 5px;">I am positioning myself to be the proven, fully trained SMB AE candidate ready to drive predictable revenue and accurately forecast from Day 1 in January (Q3).</p>
         </div>
 
+
     </div>
-
-    <script>
-        // Global placeholder for the API Key (Canvas environment handles this)
-        const apiKey = ""; 
-
-        /**
-         * Retries the fetch request with exponential backoff.
-         * @param {string} url - The API endpoint URL.
-         * @param {object} options - The fetch options.
-         * @param {number} retries - Number of remaining retries.
-         * @param {number} delay - Current delay in milliseconds.
-         * @returns {Promise<Response>} The response from the fetch call.
-         */
-        async function fetchWithBackoff(url, options, retries = 3, delay = 1000) {
-            try {
-                const response = await fetch(url, options);
-                if (response.status === 429 && retries > 0) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
-                }
-                if (!response.ok) {
-                    // Check if the response contains JSON error data
-                    let errorDetails = '';
-                    try {
-                        const errorJson = await response.json();
-                        errorDetails = JSON.stringify(errorJson, null, 2);
-                    } catch (e) {
-                        errorDetails = response.statusText;
-                    }
-                    throw new Error(`API call failed with status: ${response.status}. Details: ${errorDetails}`);
-                }
-                return response;
-            } catch (error) {
-                if (retries > 0) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    return fetchWithBackoff(url, options, retries - 1, delay * 2);
-                }
-                throw error;
-            }
-        }
-
-        async function generateBattlecard() {
-            const product = document.getElementById('cisco-product').value;
-            const competitor = document.getElementById('competitor-name').value.trim();
-            const outputDiv = document.getElementById('battlecard-output');
-            const pointsList = document.getElementById('battlecard-points');
-            const sourcesList = document.getElementById('source-list');
-            const button = document.getElementById('generate-button');
-            const buttonText = document.getElementById('button-text');
-            const loadingSpinner = document.getElementById('loading-spinner');
-            const errorMessageDiv = document.getElementById('error-message');
-
-            if (!competitor) {
-                alert("Please enter a competitor name.");
-                return;
-            }
-
-            // --- UI STATE: Loading ---
-            button.disabled = true;
-            buttonText.classList.add('hidden');
-            loadingSpinner.classList.remove('hidden');
-            outputDiv.classList.add('hidden');
-            errorMessageDiv.classList.add('hidden');
-            pointsList.innerHTML = '';
-            sourcesList.innerHTML = '';
-
-            const userQuery = `Generate a 4-point competitive battlecard comparing Cisco's ${product} against ${competitor}. Focus on key sales differentiators like Total Cost of Ownership (TCO), consolidation, integration/ecosystem advantage, and security efficacy. Present the output as a JSON array of 4 bullet points.`;
-            const systemPrompt = "Act as a highly knowledgeable Cisco Solutions Engineer. Provide a concise, 4-point competitive analysis comparing the two solutions. Focus only on factual, grounded differentiators relevant to a sales pitch (consolidation, TCO, integration, platform advantage). The output MUST be a JSON array of four strings, ready for direct use in a bulleted list. Do not include introductory text, numbers, or bullet markers in the JSON.";
-            
-            const apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent";
-            const fullUrl = apiKey ? `${apiUrl}?key=${apiKey}` : apiUrl;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                tools: [{ "google_search": {} }],
-                systemInstruction: { parts: [{ text: systemPrompt }] },
-                generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "ARRAY",
-                        items: { type: "STRING" }
-                    }
-                }
-            };
-
-            try {
-                const response = await fetchWithBackoff(fullUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-                const candidate = result.candidates?.[0];
-
-                if (candidate && candidate.content?.parts?.[0]?.text) {
-                    const jsonText = candidate.content.parts[0].text;
-                    const battlecardPoints = JSON.parse(jsonText);
-
-                    // 1. Render Battlecard Points
-                    document.getElementById('card-title').textContent = `${product} vs. ${competitor}`;
-                    battlecardPoints.forEach(point => {
-                        const li = document.createElement('li');
-                        li.textContent = point;
-                        pointsList.appendChild(li);
-                    });
-
-                    // 2. Extract and Render Sources
-                    let sources = [];
-                    const groundingMetadata = candidate.groundingMetadata;
-                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
-                        sources = groundingMetadata.groundingAttributions
-                            .map(attribution => ({
-                                uri: attribution.web?.uri,
-                                title: attribution.web?.title,
-                            }))
-                            .filter(source => source.uri && source.title);
-                    }
-
-                    if (sources.length > 0) {
-                        sources.forEach((source, index) => {
-                            const li = document.createElement('li');
-                            const a = document.createElement('a');
-                            a.href = source.uri;
-                            a.target = "_blank";
-                            a.textContent = `${index + 1}. ${source.title}`;
-                            li.appendChild(a);
-                            sourcesList.appendChild(li);
-                        });
-                    } else {
-                        const li = document.createElement('li');
-                        li.textContent = "No specific web sources found for grounding this response.";
-                        sourcesList.appendChild(li);
-                    }
-
-                    outputDiv.classList.remove('hidden');
-
-                } else {
-                    errorMessageDiv.textContent = "Received an invalid or empty response from the API. Check the input and try again.";
-                    errorMessageDiv.classList.remove('hidden');
-                }
-
-            } catch (error) {
-                console.error("Fetch or processing error:", error);
-                errorMessageDiv.textContent = `Fetch or processing error: ${error.message}. Please check your input and try again.`;
-                errorMessageDiv.classList.remove('hidden');
-
-            } finally {
-                // --- UI STATE: Done ---
-                button.disabled = false;
-                buttonText.classList.remove('hidden');
-                loadingSpinner.classList.add('hidden');
-            }
-        }
-    </script>
 </body>
 </html>
+

@@ -5,88 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMB AE Readiness Roadmap | David Yeti</title>
     <style>
+        /* Import a highly readable modern font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+
         /* General Reset and Base Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif; /* Changed Font */
             background-color: #f0f0f0;
-            padding: 20px;
+            padding: 25px; /* Increased padding */
             margin: 0;
+            font-size: 17px; /* BASE FONT SIZE INCREASED */
+            line-height: 1.5;
         }
         .container {
             max-width: 1000px;
             margin: 0 auto;
             background-color: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px; /* Increased padding */
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Stronger shadow */
         }
        
         /* Header Styling */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
         h1 {
-            font-size: 28px;
-            color: #333;
-            margin-bottom: 5px;
+            font-size: 32px; /* Increased heading size */
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-weight: 800; /* Extra bold */
         }
         .tagline {
-            font-size: 18px;
+            font-size: 20px; /* Increased tagline size */
             color: #ffffff;
             background-color: #1e3a8a; /* Dark Blue */
             display: inline-block;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
         }
 
 
         /* Benchmarks Section */
         .benchmarks {
-            background-color: #e6f0ff;
-            border-left: 5px solid #0076a8;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 6px;
+            background-color: #f7faff;
+            border: 1px solid #cce0ff;
+            padding: 25px;
+            margin-bottom: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
         .benchmarks h2 {
-            font-size: 22px;
+            font-size: 24px;
             color: #1e3a8a;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: 700;
         }
         .benchmarks-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 20px;
             text-align: center;
         }
         .benchmarks-item {
             background-color: #ffffff;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #cce0ff;
+            padding: 20px 10px;
+            border-radius: 6px;
+            border: 2px solid #e0f0ff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+        .benchmarks-item:hover {
+             transform: translateY(-3px);
+             border-color: #0076a8;
         }
         .benchmarks-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #065f46; /* Green for success */
+            font-size: 28px; /* Increased metric size */
+            font-weight: 800;
+            color: #065f46;
         }
         .benchmarks-label {
-            font-size: 12px;
-            color: #666;
+            font-size: 13px;
+            color: #444;
             margin-top: 5px;
         }
         .cert-badges {
-            margin-top: 15px;
-            font-size: 12px;
+            margin-top: 20px;
+            font-size: 13px;
             color: #333;
+            text-align: center;
         }
         .badge {
             display: inline-block;
-            padding: 4px 8px;
-            border-radius: 12px;
-            margin-right: 5px;
-            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-right: 8px;
+            font-weight: 600;
         }
         .badge-green {
             background-color: #d1fae5;
@@ -100,56 +117,75 @@
 
         /* Highlight Reel */
         .highlight-reel {
-            background-color: #fff8e1;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 6px;
+            background-color: #fcfcfc;
+            padding: 25px;
+            margin-bottom: 35px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
         }
         .highlight-reel h2 {
-            font-size: 22px;
-            color: #b8860b; /* Darker Gold */
-            margin-bottom: 15px;
-            border-bottom: 1px solid #ffd700;
-            padding-bottom: 5px;
+            font-size: 24px;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+            font-weight: 700;
         }
         .highlight-grid {
+            /* FIXED: Ensure 2 columns on desktop/tablet */
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
+        @media (max-width: 767px) {
+            .highlight-grid {
+                grid-template-columns: 1fr; /* Stack vertically on mobile */
+            }
+        }
         .highlight-item {
             background-color: #ffffff;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #ffd700;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .highlight-item h3 {
-            font-size: 16px;
-            font-weight: bold;
+            font-size: 18px;
+            font-weight: 700;
             color: #333;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+        }
+        .highlight-item p {
+            font-size: 15px;
+            line-height: 1.4;
+            color: #333;
         }
         .highlight-item a {
-            color: #0076a8;
+            color: #ff4500;
             text-decoration: none;
-            font-size: 12px;
+            font-size: 14px;
+            font-weight: 600;
             display: block;
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
 
         /* Pillars Section */
         .pillars-section h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 5px;
+            font-size: 26px;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #1e3a8a;
+            padding-bottom: 10px;
+            font-weight: 800;
         }
         .pillar-grid-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 25px;
         }
         /* Pillar 5 Spans Full Width on Desktop */
         @media (min-width: 768px) {
@@ -159,59 +195,64 @@
         }
        
         .pillar-card {
-            padding: 20px;
-            border-radius: 6px;
-            border-top: 4px solid;
-            background-color: #f9f9f9;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 6px solid;
+            background-color: #ffffff; /* White background for better contrast */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+        .pillar-card:hover {
+            transform: translateY(-3px);
         }
         .pillar-card h3 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
         }
         .pillar-card i {
-            font-size: 20px;
-            margin-right: 10px;
+            font-size: 24px;
+            margin-right: 12px;
         }
         .pillar-card ul {
             list-style: disc;
             margin-left: 20px;
-            font-size: 14px;
-            color: #555;
+            font-size: 15px;
+            color: #333;
             padding: 0;
             margin-top: 10px;
         }
         .pillar-card li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #333;
         }
         .pillar-card em {
             display: block;
             font-style: italic;
             margin-top: 5px;
-            color: #777;
-            font-size: 13px;
+            color: #555;
+            font-size: 14px;
         }
 
 
         /* Individual Pillar Colors (Used for border and icons) */
-        .p1-color { border-color: #8b5cf6; color: #8b5cf6; } /* Purple */
-        .p2-color { border-color: #3b82f6; color: #3b82f6; } /* Blue */
-        .p3-color { border-color: #ef4444; color: #ef4444; } /* Red */
-        .p4-color { border-color: #f59e0b; color: #f59e0b; } /* Yellow */
-        .p5-color { border-color: #10b981; color: #10b981; } /* Green */
+        .p1-color { border-color: #8b5cf6; color: #8b5cf6; } /* Purple - Leadership */
+        .p2-color { border-color: #3b82f6; color: #3b82f6; } /* Blue - Technical */
+        .p3-color { border-color: #ef4444; color: #ef4444; } /* Red - Business */
+        .p4-color { border-color: #f59e0b; color: #f59e0b; } /* Orange - Velocity */
+        .p5-color { border-color: #10b981; color: #10b981; } /* Green - Inner Game */
 
 
         /* Conclusion */
         .conclusion {
             background-color: #1e3a8a;
             color: #ffffff;
-            padding: 25px;
-            margin-top: 30px;
-            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 12px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
@@ -219,30 +260,54 @@
             margin: 0;
         }
         .conclusion-title {
-            font-size: 20px;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 700;
         }
         .cta-container {
             margin-top: 30px;
-            padding: 20px;
-            background-color: #e0f0ff;
+            padding: 25px;
+            background-color: #f7faff; /* Light Blue/White background */
             border: 1px solid #cce0ff;
-            border-radius: 8px;
+            border-radius: 10px;
             text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
         }
         .cta-button {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #ff4500; /* Cisco Orange/Red for CTA */
+            padding: 14px 30px;
+            background-color: #ff4500; /* Primary Cisco Red/Orange */
             color: white;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            font-size: 16px;
+            font-weight: 700;
+            border-radius: 8px;
+            font-size: 17px;
             transition: background-color 0.3s;
+            box-shadow: 0 3px 6px rgba(255, 69, 0, 0.3);
+            margin: 5px;
         }
         .cta-button:hover {
             background-color: #cc3700;
+        }
+        .cta-button-secondary {
+            padding: 14px 30px;
+            background-color: #0076a8; /* Secondary Cisco Blue */
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            font-size: 17px;
+            transition: background-color 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 118, 168, 0.3);
+            margin: 5px;
+        }
+        .cta-button-secondary:hover {
+            background-color: #005a80;
         }
 
 
@@ -302,7 +367,7 @@
             <div class="cert-badges">
                 <span class="badge badge-green">Google Cybersecurity Certificate Completed</span>
                 <span class="badge badge-green">CompTIA Security+ Certified</span>
-                <span class="badge badge-yellow">GenAi Collab - White Belt in progress</span>
+                <span class="badge badge-yellow">GAI - White Belt in progress</span>
             </div>
         </div>
 
@@ -310,14 +375,14 @@
         <!-- Career Highlight Reel Section (The Proof) -->
         <div class="highlight-reel">
             <h2>Career Highlight Reel: Tangible Results</h2>
-            <p style="font-size: 14px; color: #666; margin-bottom: 15px;">These artifacts demonstrate proven capability and serve as the foundation for the 90-Day AE launch plan. (Clickable links can be dropped in here.)</p>
+            <p style="font-size: 15px; color: #333; margin-bottom: 15px;">These artifacts demonstrate proven capability and serve as the foundation for the 90-Day AE launch plan. (Clickable links can be dropped in here.)</p>
            
             <div class="highlight-grid">
                
                 <!-- Slot 1: Mock Call & Pitch Readiness (Pillar 2) -->
                 <div class="highlight-item">
                     <h3>Mock Call & Pitch Readiness</h3>
-                    <p style="font-size: 13px;">Completed recorded mock discovery calls on Duo and Secure Access, validating conversational fluency and objection handling before AE launch.</p>
+                    <p style="font-size: 15px;">Completed recorded mock discovery calls on Duo and Secure Access, validating conversational fluency and objection handling before AE launch.</p>
                     <a href="[Insert Unlisted YouTube Link]" style="color: #ef4444; font-weight: bold;">Watch Recorded Discovery Call (5 min)</a>
                 </div>
 
@@ -325,23 +390,23 @@
                 <!-- Slot 2: Certified Technical Competence (Pillar 2) -->
                 <div class="highlight-item">
                     <h3>Certified Technical Competence</h3>
-                    <p style="font-size: 13px;">Achieved CompTIA Security+ certification, proving mastery of security fundamentals (SASE, Zero Trust, risk mitigation) needed for credible customer conversations.</p>
-                    <a href="https://www.credly.com/badges/1dc4932b-d134-4401-afc7-5b96124397fe/public_url" style="color: #ef4444; font-weight: bold;">View Verified Security+ Badge</a>
+                    <p style="font-size: 15px;">Achieved CompTIA Security+ certification, proving mastery of security fundamentals (SASE, Zero Trust, risk mitigation) needed for credible customer conversations.</p>
+                    <a href="[Insert Verified Credly Link]" style="color: #ef4444; font-weight: bold;">View Verified Security+ Badge</a>
                 </div>
 
 
                 <!-- Slot 3: Pipeline Management System (Pillar 5) -->
                 <div class="highlight-item">
                     <h3>Pipeline Management System</h3>
-                    <p style="font-size: 13px;">Developed a Trello/Kanban board methodology for tracking pipeline hygiene, shadow deals, and partner SLA adherence (demonstrates organizational rigor).</p>
-                    <a href="https://www.youtube.com/@davidyeti" style="color: #ef4444; font-weight: bold;">Review Kanban System Demo</a>
+                    <p style="font-size: 15px;">Developed a Trello/Kanban board methodology for tracking pipeline hygiene, shadow deals, and partner SLA adherence (demonstrates organizational rigor).</p>
+                    <a href="[Insert Trello/Miro Link]" style="color: #ef4444; font-weight: bold;">Review Kanban System Demo</a>
                 </div>
 
 
                 <!-- Slot 4: Forecasting & Quoting Proficiency (Pillar 3) -->
                 <div class="highlight-item">
                     <h3>Forecasting & Quoting Proficiency</h3>
-                    <p style="font-size: 13px;">Proficient in generating quotes (CCW) and manipulating forecast calls (Clari), eliminating ramp time associated with critical internal tools.</p>
+                    <p style="font-size: 15px;">Proficient in generating quotes (CCW) and manipulating forecast calls (Clari), eliminating ramp time associated with critical internal tools.</p>
                     <a href="[Insert Clari/CCW Mock Report Link]" style="color: #ef4444; font-weight: bold;">View Mock Forecast Report</a>
                 </div>
             </div>
@@ -421,9 +486,21 @@
             <p style="font-size: 16px; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">
                 Ready to discuss Q3 revenue alignment?
             </p>
-            <a href="mailto:YOUREMAIL@cisco.com?subject=Discussion%20on%20Q3%20AE%20Readiness%20-%20David%20Yeti%20Roadmap&body=Thank%20you%20for%20reviewing%20my%20roadmap.%20I%20am%20available%20for%20a%20Webex%20call%20to%20discuss%20my%20next%20steps." class="cta-button">
-                <i class="fas fa-comments" style="margin-right: 8px;"></i> Contact David (Webex/Email)
-            </a>
+            <div class="cta-buttons">
+                <!-- PRIMARY CTA: WEBEX CHAT (Deep Link) -->
+                <a href="webexteams://im?email=ryeti@cisco.com" class="cta-button">
+                    <i class="fas fa-comments" style="margin-right: 8px;"></i> Start Webex Chat Now
+                </a>
+               
+                <!-- SECONDARY CTA: EMAIL BUTTON -->
+                <a href="mailto:ryeti@cisco.com?subject=Inquiry%20from%20AE%20Readiness%20Roadmap&body=I%20reviewed%20your%20roadmap%20 and%20would%20like%20to%20schedule%20time%20to%20discuss%20the%20AE%20role%20further."
+                   class="cta-button-secondary">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> Schedule/Email Me
+                </a>
+            </div>
+            <p style="font-size: 14px; color: #666; margin-top: 15px;">
+                (Note: Chat link requires Webex Teams desktop app. Email is a formal scheduling fallback.)
+            </p>
         </div>
 
 
@@ -432,7 +509,7 @@
         <!-- Conclusion Goal -->
         <div class="conclusion">
             <p class="conclusion-title">Target Outcome: Easy to Ramp Hire</p>
-            <p style="font-size: 14px; margin-top: 5px;">I am positioning myself to be the proven, fully trained SMB AE candidate ready to drive predictable revenue and accurately forecast from Day 1 in January (Q3).</p>
+            <p style="font-size: 16px; margin-top: 5px;">I am positioning myself to be the proven, fully trained SMB AE candidate ready to drive predictable revenue and accurately forecast from Day 1 in January (Q3).</p>
         </div>
 
 
